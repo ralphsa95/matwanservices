@@ -56,9 +56,9 @@ public interface EquipeMapper {
      */
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     @Mappings({
-            @Mapping(target = "id", ignore = true), // On ne touche pas à l'id
-            @Mapping(target = "nom", source = "equipePayload.nom"),
-            @Mapping(target = "acronym", source = "equipePayload.acronym"),
+            @Mapping(target = "id", ignore = true),
+            @Mapping(target = "nom",  ignore = true),
+            @Mapping(target = "acronym", ignore = true),
             @Mapping(target = "budget", source = "equipePayload.budget"),
             @Mapping(target = "joueurs", source = "equipePayload.joueurs"),
     })

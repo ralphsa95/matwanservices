@@ -1,5 +1,6 @@
 package fr.matawan.football.management.payload;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Id;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
@@ -18,6 +19,7 @@ import java.util.List;
 public class EquipePayload {
 
     @Id
+    @Schema(type = "Long",  description = "Auto-générée par l'application")
     private Long id;
 
     @NotBlank(message = "Le nom de l'équipe est obligatoire")

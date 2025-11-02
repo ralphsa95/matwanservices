@@ -6,6 +6,9 @@ import fr.matawan.football.management.response.EquipeResponse;
 import fr.matawan.football.management.service.EquipeService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -46,7 +49,16 @@ public class EquipeController {
      * @throws Exception En cas d'erreur lors de la récupération des équipes.
      */
     @GetMapping
-    @Operation(summary = "Lister les équipes", description = "Retourne la liste paginée et trié des équipes.")
+    @Operation(summary = "Lister les équipes", description = "Retourne la liste paginée et trié des équipes.",         responses = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Succès",
+                    content = @Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = EquipeResponse.class)
+                    )
+            )
+    })
     public ResponseEntity<?> getEquipes(
             @Parameter(description = "Numéro de page", example = "0")
             @RequestParam(defaultValue = "0") int page,
@@ -81,6 +93,8 @@ public class EquipeController {
      * @return Une réponse indiquant le succès ou l'échec de l'opération.
      */
     @PostMapping
+    @Operation(summary = "Création d'équipe", description = "Créé une nouvelle équipe avec ses joueurs. Le nom et " +
+            "l'acronym doivent être uniques. L'id est auto-généré et ignorée par l'application dans ce cas.")
     public ResponseEntity<?> createEquipe(@Valid @RequestBody EquipeRequest equipeRequest)  {
        try {
            equipeService.createEquipe(equipeRequest.getEquipePayload());
@@ -98,6 +112,8 @@ public class EquipeController {
      * @return Une réponse indiquant le succès ou l'échec de l'opération.
      */
     @PatchMapping
+    @Operation(summary = "Modification d'équipe", description = "Modifier l'équipe existante avec ses joueurs. Le nom" +
+            " et l'acronym ne peuvent pas être modifiés. L'id est auto ignorée par l'application.")
     public ResponseEntity<?> updateEquipe(@Valid @RequestBody EquipeRequest equipeRequest) {
         try {
             equipeService.updateEquipe(equipeRequest.getEquipePayload());

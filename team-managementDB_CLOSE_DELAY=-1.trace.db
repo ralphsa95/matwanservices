@@ -1,0 +1,9 @@
+2025-11-02 23:23:00.900067+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "EQUIPE" not found (this database is empty); SQL statement:
+select e1_0.id,e1_0.acronym,e1_0.budget,e1_0.nom from equipe e1_0 order by e1_0.acronym offset ? rows fetch first ? rows only [42104-224]
+2025-11-02 23:23:18.016968+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "EQUIPE" not found (this database is empty); SQL statement:
+select e1_0.id,e1_0.acronym,e1_0.budget,e1_0.nom from equipe e1_0 order by e1_0.nom offset ? rows fetch first ? rows only [42104-224]
+2025-11-02 23:24:41.937093+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "EQUIPE" not found (this database is empty); SQL statement:
+select e1_0.id,e1_0.acronym,e1_0.budget,e1_0.nom from equipe e1_0 order by e1_0.nom offset ? rows fetch first ? rows only [42104-224]
