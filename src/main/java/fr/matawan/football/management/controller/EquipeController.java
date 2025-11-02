@@ -52,9 +52,9 @@ public class EquipeController {
             @RequestParam(defaultValue = "0") int page,
             @Parameter(description = "Taille de page", example = "5")
             @RequestParam(defaultValue = "10") int size,
-            @Parameter(description = "Elément de tri entre:nom, acronym ou budget", example = "acronym")
+            @Parameter(description = "Elément de tri entre: nom, acronym ou budget", example = "acronym")
             @RequestParam(defaultValue = "nom") String sort, // "nom", "acronym", "budget"
-            @Parameter(description = "Sens de triage", example = "asc ou desc")
+            @Parameter(description = "Sens de triage: asc ou desc", example = "asc")
             @RequestParam(defaultValue = "asc") String sens
     ) {
         Sort sortOrder = sens.equalsIgnoreCase("desc") ? Sort.by(sort).descending() : Sort.by(sort).ascending();
