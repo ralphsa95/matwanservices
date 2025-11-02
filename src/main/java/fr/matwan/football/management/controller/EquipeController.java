@@ -56,7 +56,7 @@ public class EquipeController {
             @RequestParam(defaultValue = "nom") String sort, // "nom", "acronym", "budget"
             @Parameter(description = "Sens de triage", example = "asc ou desc")
             @RequestParam(defaultValue = "asc") String sens
-    ) throws Exception {
+    ) {
         Sort sortOrder = sens.equalsIgnoreCase("desc") ? Sort.by(sort).descending() : Sort.by(sort).ascending();
         Pageable pageable = PageRequest.of(page, size, sortOrder);
         Page<EquipePayload> pageResult = equipeService.getAllEquipes(pageable);

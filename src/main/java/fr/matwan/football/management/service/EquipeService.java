@@ -55,8 +55,8 @@ public class EquipeService {
      */
     @Transactional
     public void updateEquipe(@Valid EquipePayload equipePayload) {
-        Equipe existingEquipe = equipeRepository.findByNom(equipePayload.getNom())
-                .orElseThrow(() -> new RuntimeException("Équipe non trouvée avec le nom : " + equipePayload.getNom()));
+        Equipe existingEquipe = equipeRepository.findByNomOrAcronym(equipePayload.getNom(), equipePayload.getAcronym())
+                .orElseThrow(() -> new RuntimeException("Équipe non trouvée pour la mise à jour"));
 
         equipeMapper.updateEquipeFromPayload(equipePayload, existingEquipe);
         equipeRepository.save(existingEquipe);
