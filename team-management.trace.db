@@ -156,7 +156,7 @@ Wrong user name or password [28000-224]
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352)
-	at fr.matwan.football.management.FootBallManagementApiApplication.main(OgcNiceApiApplication.java:10)
+	at fr.matawan.football.management.FootBallManagementApiApplication.main(OgcNiceApiApplication.java:10)
 Caused by: org.h2.jdbc.JdbcSQLInvalidAuthorizationSpecException: Mauvais nom d'utilisateur ou mot de passe
 Wrong user name or password [28000-224]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:522)
@@ -217,7 +217,7 @@ Wrong user name or password [28000-224]
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352)
-	at fr.matwan.football.management.FootBallManagementApiApplication.main(OgcNiceApiApplication.java:10)
+	at fr.matawan.football.management.FootBallManagementApiApplication.main(OgcNiceApiApplication.java:10)
 Caused by: org.h2.jdbc.JdbcSQLInvalidAuthorizationSpecException: Mauvais nom d'utilisateur ou mot de passe
 Wrong user name or password [28000-224]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:522)
