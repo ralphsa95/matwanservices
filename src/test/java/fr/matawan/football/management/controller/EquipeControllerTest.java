@@ -7,7 +7,9 @@ import fr.matawan.football.management.service.EquipeService;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -22,7 +24,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.patch;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@WebMvcTest(EquipeController.class)
+@SpringBootTest
+@AutoConfigureMockMvc
 class EquipeControllerTest {
 
     @Autowired
@@ -135,5 +138,59 @@ class EquipeControllerTest {
                 .andExpect(status().isInternalServerError())
                 .andExpect(content().string(org.hamcrest.Matchers.containsString(
                         "Erreur lors de la mise à jour de l'équipe: Erreur simulée")));
+    }
+
+    //Tests Intégration
+    @Test
+    void testCreateEquipe_thenGetEquipes() throws Exception {
+        // 1. Prépare le payload pour création d'équipe
+        String payload = """
+{
+      "equipePayload": {
+        "nom": "Test 1",
+        "acronym": "TT",
+        "budget": "500",
+        "joueurs": [
+          {
+            "nom": "Test",
+            "prenom": "Test",
+            "dateDebut": "2019-07-01",
+            "dateFinContrat": "2026-06-30",
+            "position": "milieu"
+          },
+          {
+            "nom": "Test2",
+            "prenom": "Test2",
+            "dateDebut": "2021-02-01",
+            "dateFinContrat": "2027-06-30",
+            "position": "défenseur central"
+          }
+        ]
+      }
+    }""";
+
+        // 2. Crée l'équipe
+        mockMvc.perform(post("/equipe")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(payload))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    void testCreateEquipe_BadRequest() throws Exception {
+        // Budget manquant
+        String payload = """
+        {
+          "equipePayload": {
+            "nom": "Equipe Sans Budget",
+            "acronym": "ESB"
+          }
+        }
+        """;
+
+        mockMvc.perform(post("/equipe")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(payload))
+                .andExpect(status().isBadRequest());
     }
 }

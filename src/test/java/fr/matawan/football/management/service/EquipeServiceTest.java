@@ -103,7 +103,7 @@ class EquipeServiceTest {
         equipePayload.setNom("OGC Nice");
         equipePayload.setBudget(30000L);
 
-        // 2. l'entité persistée (ce que le repo retourne)
+        // 2. l'entité persistée (ce que le repo retourne) q
         Equipe equipeEntity = new Equipe();
         equipeEntity.setAcronym("OGCN");
         equipeEntity.setNom("OGC Nice");
