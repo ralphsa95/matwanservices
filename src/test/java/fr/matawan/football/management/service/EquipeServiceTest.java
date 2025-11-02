@@ -113,13 +113,13 @@ class EquipeServiceTest {
         when(equipeRepository.save(Mockito.any())).thenReturn(equipeEntity);
 
         // 4. Mock la méthode findByAcronym pour retourner l'entité
-        when(equipeRepository.findByNomOrAcronym("OGC Nice","OGCN")).thenReturn(Optional.of(equipeEntity));
+        when(equipeRepository.findByNomAndAcronym("OGC Nice","OGCN")).thenReturn(Optional.of(equipeEntity));
 
         // 5. Appelle la méthode du service
         equipeService.updateEquipe(equipePayload);
 
         // 6. Vérification du résultat
-        Optional<Equipe> result = equipeRepository.findByNomOrAcronym("OGC Nice","OGCN");
+        Optional<Equipe> result = equipeRepository.findByNomAndAcronym("OGC Nice","OGCN");
         assertEquals(30000L, result.get().getBudget());
     }
 }

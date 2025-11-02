@@ -11,7 +11,5 @@ import java.util.Optional;
 public interface EquipeRepository extends JpaRepository<Equipe, Long> {
     Optional<Equipe> findByNom(String nom);
 
-    Optional<Equipe> findByNomOrAcronym(String nom, String acronym);
-
-    Optional<Equipe> findByAcronym(String acronym);
+    Optional<Equipe> findByNomAndAcronym(String nom, String acronym);
 }

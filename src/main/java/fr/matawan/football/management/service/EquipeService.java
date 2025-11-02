@@ -40,7 +40,7 @@ public class EquipeService {
      */
     @Transactional
     public void createEquipe(EquipePayload equipePayload)  {
-        Optional existingEquipe = equipeRepository.findByNomOrAcronym(equipePayload.getNom(), equipePayload.getAcronym());
+        Optional existingEquipe = equipeRepository.findByNomAndAcronym(equipePayload.getNom(), equipePayload.getAcronym());
         if(existingEquipe.isPresent()) {
             throw new RuntimeException("Équipe déjà existante");
         }
@@ -55,7 +55,7 @@ public class EquipeService {
      */
     @Transactional
     public void updateEquipe(@Valid EquipePayload equipePayload) {
-        Equipe existingEquipe = equipeRepository.findByNomOrAcronym(equipePayload.getNom(), equipePayload.getAcronym())
+        Equipe existingEquipe = equipeRepository.findByNomAndAcronym(equipePayload.getNom(), equipePayload.getAcronym())
                 .orElseThrow(() -> new RuntimeException("Équipe non trouvée pour la mise à jour"));
 
         equipeMapper.updateEquipeFromPayload(equipePayload, existingEquipe);
