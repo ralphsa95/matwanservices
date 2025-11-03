@@ -27,18 +27,11 @@ Elle permet de créer une équipe avec ses joueurs, la mettre à jour, et retoun
 
 ## Code source
 - Cloner le code depuis https://github.com/ralphsa95/matwanservices.git
-- Vous pouvez aussi dézipper le code source envoyé en zip dans le mail
+- Ou bien installer le zip en attach team-management.zip
 
 ## Acces à la base
 - Après avoir lancer l'appli, accéder à http://localhost:8081/h2-console/
 - Pour login: user sa/ sans mot de passe 
               admin/pass123!
-- 2 tables sont créées: equipe et joueur
-- Les équipes suivantes sont déjà créées:
-		OGC Nice	           | OGCN	
-		AS Monaco	           | ASM
-		Olympique de Marseille | OM	
-		Paris Saint-Germain    | PSG
-		Olympique Lyonnais	   | OL		
-		Lille OSC	           | LOSC	
+- 2 tables sont créées: equipe et joueur	
 		
